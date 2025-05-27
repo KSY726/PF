@@ -14,8 +14,37 @@
         <div class="header-container">
             <h1><a href="/">Design PORTFOLIO</a></h1> {# 메인 페이지로 돌아가는 링크 #}
             <p class="designer-name">그래픽 디자이너 구현서</p>
+            <button class="hamburger-menu" aria-label="메뉴 열기/닫기">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
         </div>
     </header>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <button class="close-button" aria-label="메뉴 닫기">×</button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="/">Home</a></li> {# 메인 페이지로 이동 #}
+                <li><a href="/#about-me">About Me</a></li> {# 메인 페이지의 About 섹션으로 이동 #}
+                <li><a href="/#project-list">Projects</a></li> {# 메인 페이지의 Projects 섹션으로 이동 #}
+                </ul>
+        </nav>
+        <div class="contact-info">
+            <h2>Thank you!</h2>
+            <div class="divider-line"></div>
+            <div class="info-grid">
+                <p><span>PHONE</span> +010-5954-XXXX</p>
+                <p><span>EMAIL</span> syku0903@gmail.com</p>
+                <p><span>SNS</span> @_KSY726</p>
+            </div>
+            <p class="designer-name-sidebar">구현서</p>
+            <div class="divider-line"></div>
+        </div>
+    </aside>
 
     <main>
         <section id="project-detail-section">
@@ -33,7 +62,6 @@
 
             <div class="project-full-images">
                 {% for image_path in project.full_images %}
-                    {# 상세 페이지용 이미지들을 반복하여 표시합니다. #}
                     <img src="{{ url_for('static', filename=image_path) }}" alt="{{ project.title_ko }} - 이미지 {{ loop.index }}">
                 {% endfor %}
             </div>
@@ -47,5 +75,7 @@
     <footer>
         <p>&copy; 2025 HYUNSEO GU. All rights reserved.</p>
     </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
     --color-dark-gray: #333;
     --color-medium-gray: #777;
     --border-color: #eee;
+    --menu-width: 300px; /* 사이드바 너비 */
 }
 
 /* 기본 설정 */
@@ -21,6 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
 }
 
 a {
@@ -48,6 +50,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end; /* 디자이너 이름이 아래에 붙도록 */
+    position: relative; /* 햄버거 버튼 위치 기준 */
 }
 
 header h1 {
@@ -69,7 +72,150 @@ header .designer-name {
     margin: 0;
 }
 
-/* 섹션 공통 스타일 */
+/* --- 햄버거 메뉴 버튼 --- */
+.hamburger-menu {
+    position: absolute; /* 헤더 컨테이너 기준 절대 위치 */
+    right: 2rem; /* 오른쪽에서 2rem 떨어진 곳 */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* 사이드바 위에 위치 */
+}
+
+.hamburger-menu:focus {
+    outline: none;
+}
+
+.hamburger-menu .line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-black);
+    transition: all 0.3s ease;
+}
+
+/* --- 사이드바 메뉴 --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%; /* 초기에는 화면 밖에 숨김 */
+    width: var(--menu-width);
+    height: 100%;
+    background-color: var(--color-white);
+    border-left: 1px solid var(--border-color);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.4s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+}
+
+.sidebar.active {
+    right: 0; /* 활성화되면 화면 안으로 들어옴 */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: flex-end; /* 닫기 버튼 오른쪽 정렬 */
+    margin-bottom: 2rem;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--color-dark-gray);
+    line-height: 1;
+    padding: 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3rem;
+}
+
+.sidebar-nav ul li {
+    margin-bottom: 1rem;
+}
+
+.sidebar-nav ul li a {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-black);
+    display: block;
+    padding: 0.5rem 0;
+}
+
+.sidebar-nav ul li a:hover {
+    color: var(--color-medium-gray);
+}
+
+/* --- 연락처 정보 (Thank you! 부분) --- */
+.contact-info {
+    margin-top: auto; /* 푸터처럼 하단에 붙이기 위해 */
+    padding-top: 2rem;
+    text-align: left;
+    border-top: 1px solid var(--border-color); /* 상단 구분선 */
+}
+
+.contact-info h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-black);
+    font-weight: normal; /* 이미지와 동일하게 */
+}
+
+.contact-info .divider-line {
+    border-bottom: 1px solid var(--color-medium-gray); /* 회색 선 */
+    width: 80%; /* 이미지와 유사한 너비 */
+    margin-bottom: 1.5rem;
+}
+
+.contact-info .info-grid {
+    display: grid;
+    grid-template-columns: auto 1fr; /* 첫 번째 열은 텍스트 길이만큼, 두 번째 열은 나머지 공간 */
+    gap: 0.5rem 1rem; /* 행 간격, 열 간격 */
+    margin-bottom: 2rem;
+}
+
+.contact-info .info-grid p {
+    font-size: 0.95rem;
+    margin: 0;
+    color: var(--color-dark-gray);
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.contact-info .info-grid p span {
+    font-weight: 500;
+    color: var(--color-medium-gray); /* 라벨 색상 */
+    margin-right: 0.5rem;
+    display: inline-block; /* 간격 유지를 위해 */
+    min-width: 50px; /* 라벨 최소 너비 */
+}
+
+.contact-info .designer-name-sidebar {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-black);
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+/* --- 섹션 공통 스타일 --- */
 section {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -170,7 +316,7 @@ h2 {
     text-align: center;
     overflow: hidden; /* 이미지 확대 시 영역 밖으로 나가는 것 방지 */
     position: relative; /* 내부 요소 absolute positioning 기준점 */
-    border: 1px solid var(--color-border); /* 기본 테두리 */
+    border: 1px solid var(--border-color); /* 기본 테두리 */
     background-color: var(--color-white); /* 기본 흰색 배경 */
     cursor: pointer;
     transition: transform 0.3s ease; /* 확대 애니메이션 */
@@ -250,13 +396,11 @@ h2 {
 .project-item.text-placeholder .project-text-overlay {
     opacity: 1; /* 텍스트 플레이스홀더는 항상 텍스트를 보임 */
     background-color: var(--color-white); /* 항상 흰색 배경 */
-    /* 호버 시 텍스트 플레이스홀더의 오버레이는 그대로 유지 (opacity: 1) */
 }
 
 .project-item.text-placeholder:hover .project-text-overlay {
     opacity: 1; /* 호버 시에도 텍스트가 그대로 보이게 */
-    /* 필요하다면 호버 시 배경색만 살짝 변경 가능 */
-    background-color: var(--color-light-gray);
+    background-color: var(--color-light-gray); /* 호버 시 배경색만 살짝 변경 */
 }
 
 
@@ -298,4 +442,97 @@ h2 {
     margin: 0 auto 4rem auto;
     font-size: 1.1rem;
     line-height: 1.8;
-    text-align: justify
+    text-align: justify; /* 설명 텍스트 양쪽 정렬 */
+}
+
+.project-description p {
+    text-align: justify; /* 양쪽 정렬 */
+    margin-bottom: 1.5rem;
+}
+
+.project-full-images img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem auto; /* 이미지 상하 여백 */
+    border: 1px solid var(--border-color); /* 이미지 테두리 */
+}
+
+.back-link {
+    margin-top: 4rem;
+    font-size: 1.1rem;
+}
+
+/* 푸터 */
+footer {
+    background-color: var(--color-light-gray);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-medium-gray);
+    border-top: 1px solid var(--border-color); /* 수정: --border-border -> --border-color */
+    margin-top: auto;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header .designer-name {
+        margin-top: 0.5rem;
+    }
+    
+    .hamburger-menu { /* 모바일에서 햄버거 버튼 위치 조정 */
+        top: 2rem;
+        right: 1rem;
+        transform: none;
+    }
+
+    .section-header-left {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+    }
+
+    .section-title-en {
+        margin-top: 0.5rem;
+    }
+
+    #about-me .about-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    #about-me .about-image {
+        order: -1; /* 이미지를 텍스트 위로 이동 */
+        text-align: center;
+    }
+
+    .project-gallery {
+        grid-template-columns: 1fr; /* 모바일에서는 1열 */
+    }
+
+    .project-item {
+        aspect-ratio: 16/9; /* 모바일에서 비율 조정 (선택 사항) */
+    }
+
+    .project-item .project-text {
+        font-size: 1.5rem;
+    }
+
+    .project-detail-title {
+        font-size: 2.5rem;
+    }
+
+    .project-description {
+        font-size: 1rem;
+    }
+
+    /* 사이드바 모바일 너비 조정 */
+    .sidebar {
+        width: 80%; /* 모바일에서 사이드바 너비 */
+    }
+}

@@ -21,8 +21,8 @@ projects_data = [
         "id": "surrealist-photography",
         "title_ko": "초현실주의 사진",
         "title_en": "surrealist<br>photography", # <br> 태그로 제목 줄바꿈 가능
-        "thumb_img": "images/photography_thumb.png", # <--- 추가/수정: 이 부분에 썸네일 이미지 경로를 넣어줍니다.
-        "type": "image", # <--- 수정: 'text'에서 'image'로 변경합니다.
+        "thumb_img": "images/photography_thumb.png", # 썸네일 이미지 경로
+        "type": "image", # 'image'로 변경하여 호버 시 이미지 보임
         "description": "꿈과 현실의 경계를 허무는 초현실주의 사진 시리즈입니다. 일상적인 풍경에 비현실적인 요소를 더하여 상상력을 자극하고, 보는 이에게 새로운 시각적 경험을 선사합니다. 각각의 사진은 독립적인 이야기를 담고 있으면서도, 전체적으로는 하나의 거대한 내러티브를 형성합니다.",
         "full_images": ["images/photography_full_1.jpg"],
         "materials": "사진, 디지털 합성, Adobe Photoshop",
@@ -32,14 +32,16 @@ projects_data = [
         "id": "logo-design",
         "title_ko": "로고 디자인",
         "title_en": "logo design",
-        "thumb_img": "images/logo_design_thumb.png", # <--- 추가/수정: 이 부분에 썸네일 이미지 경로를 넣어줍니다.
-        "type": "image", # <--- 수정: 'text'에서 'image'로 변경합니다.
+        "thumb_img": "images/logo_design_thumb.png", # 썸네일 이미지 경로
+        "type": "image", # 'image'로 변경하여 호버 시 이미지 보임
         "description": "다양한 브랜드의 아이덴티티를 구축하기 위한 로고 디자인 작업물입니다. 클라이언트의 요구사항을 바탕으로 시장 조사, 컨셉 도출, 시안 제작 과정을 거쳐 브랜드의 핵심 가치를 시각적으로 표현합니다. 미니멀리즘부터 복잡한 일러스트레이션까지 폭넓은 스타일을 다룹니다.",
         "full_images": ["images/logo_design_full_1.jpg", "images/logo_design_full_2.jpg"],
         "materials": "Adobe Illustrator, 스케치",
         "year": "2024"
     }
     # 여기에 더 많은 프로젝트를 추가할 수 있습니다.
+    # 복사해서 붙여넣고 id, title_ko, title_en, thumb_img, type, description, full_images, materials, year 등을 수정하세요.
+    # 만약 호버 시 이미지가 뜨게 하고 싶다면 'thumb_img'에 이미지 경로를 넣고 'type'을 'image'로 설정하세요.
 ]
 
 # --- Flask 라우팅 (URL 처리) ---
