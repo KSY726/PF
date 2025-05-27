@@ -13,7 +13,7 @@ projects_data = [
         "thumb_img": "images/media_art_thumb.png", # 호버 시 나타날 썸네일 이미지 (static/images/ 경로)
         "type": "image", # 'image': 썸네일 이미지가 보임, 'text': 텍스트만 보임 (호버 시에도)
         "description": "이 미디어 아트 프로젝트는 첨단 기술과 예술적 감각을 융합하여 관람객에게 몰입형 경험을 제공합니다. 다양한 인터랙티브 요소를 통해 사용자의 참여를 유도하며, 시각적, 청각적 자극을 통해 새로운 차원의 예술적 사색을 이끌어냅니다.",
-        "full_images": ["images/artwork_full_1.jpg", "images/artwork_full_2.jpg"], # 상세 페이지용 이미지 목록
+        "full_images": ["images/artwork_full_1.jpg"], # 상세 페이지용 이미지 목록
         "materials": "디지털 미디어, 인터랙티브 센서, 프로젝션 맵핑",
         "year": "2023"
     },
