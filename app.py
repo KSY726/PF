@@ -9,7 +9,7 @@ projects_data = [
     {
         "id": "media-art", # 프로젝트를 식별하는 고유 ID (URL에 사용됨)
         "title_ko": "미디어 아트", # 한글 제목
-        "title_en": "media art", # 영문 제목 (프로젝트 박스에 표시)
+        "title_en": "Media art", # 영문 제목 (프로젝트 박스에 표시)
         "thumb_img": "images/media_art_thumb.png", # 호버 시 나타날 썸네일 이미지 (static/images/ 경로)
         "type": "image", # 'image': 썸네일 이미지가 보임, 'text': 텍스트만 보임 (호버 시에도)
         "description": "이 미디어 아트 프로젝트는 첨단 기술과 예술적 감각을 융합하여 관람객에게 몰입형 경험을 제공합니다. 다양한 인터랙티브 요소를 통해 사용자의 참여를 유도하며, 시각적, 청각적 자극을 통해 새로운 차원의 예술적 사색을 이끌어냅니다.",
@@ -18,9 +18,9 @@ projects_data = [
         "year": "2023"
     },
     {
-        "id": "surrealist-photography",
+        "id": "Surrealist-Photography",
         "title_ko": "초현실주의 사진",
-        "title_en": "surrealist<br>photography", # <br> 태그로 제목 줄바꿈 가능
+        "title_en": "Surrealist<br>Photography", # <br> 태그로 제목 줄바꿈 가능
         "thumb_img": "images/photography_thumb.png", # 썸네일 이미지 경로
         "type": "image", # 'image'로 변경하여 호버 시 이미지 보임
         "description": "꿈과 현실의 경계를 허무는 초현실주의 사진 시리즈입니다. 일상적인 풍경에 비현실적인 요소를 더하여 상상력을 자극하고, 보는 이에게 새로운 시각적 경험을 선사합니다. 각각의 사진은 독립적인 이야기를 담고 있으면서도, 전체적으로는 하나의 거대한 내러티브를 형성합니다.",
@@ -29,14 +29,14 @@ projects_data = [
         "year": "2024"
     },
     {
-        "id": "logo-design",
+        "id": "Logo-Design",
         "title_ko": "로고 디자인",
-        "title_en": "logo design",
+        "title_en": "Logo Design",
         "thumb_img": "images/logo_design_thumb.png", # 썸네일 이미지 경로
         "type": "image", # 'image'로 변경하여 호버 시 이미지 보임
-        "description": "다양한 브랜드의 아이덴티티를 구축하기 위한 로고 디자인 작업물입니다. 클라이언트의 요구사항을 바탕으로 시장 조사, 컨셉 도출, 시안 제작 과정을 거쳐 브랜드의 핵심 가치를 시각적으로 표현합니다. 미니멀리즘부터 복잡한 일러스트레이션까지 폭넓은 스타일을 다룹니다.",
-        "full_images": ["images/logo_design_full_1.jpg", "images/logo_design_full_2.jpg"],
-        "materials": "Adobe Illustrator, 스케치",
+        "description": "다양한 브랜드의 아이덴티티를 구축하기 위한 로고 디자인 작업물입니다. 클라이언트의 요구사항을 바탕으로 시장 조사, 컨셉 도출, 시안 제작 과정을 거쳐 브랜드의 핵심 가치를 시각적으로 표현합니다. 미니멀리즘부터 타이포 그래피까지 폭넓은 스타일을 다룹니다.",
+        "full_images": ["images/logo_design_full_1.jpg"],
+        "materials": "Adobe Illustrator",
         "year": "2024"
     }
     # 여기에 더 많은 프로젝트를 추가할 수 있습니다.
