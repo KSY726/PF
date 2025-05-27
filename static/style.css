@@ -1,7 +1,11 @@
 /* 웹 폰트 정의 */
+/* Google Fonts 임포트: Gowun Dodum 폰트 추가 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@400;700&family=Gowun+Dodum&display=swap');
+
 :root {
     --font-heading: 'Playfair Display', serif; /* 큰 제목, 로고용 */
     --font-body: 'Noto Sans KR', sans-serif;   /* 본문용 */
+    --font-gowun-dodum: 'Gowun Dodum', sans-serif; /* <-- 새로 추가: 고운돋움 폰트 */
     --color-black: #000;
     --color-white: #fff;
     --color-light-gray: #f8f8f8;
@@ -175,7 +179,7 @@ header .designer-name {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: var(--color-black);
-    font-weight: normal; /* 이미지와 동일하게 */
+    font-weight: normal;
 }
 
 .contact-info .divider-line {
@@ -235,6 +239,15 @@ h2 {
     color: var(--color-black);
     font-weight: 500;
     margin: 0; /* 기본 마진 제거 */
+}
+
+/* '안녕하세요, 구현서입니다.' 고운돋움 폰트 스타일 */
+.gowun-dodum-heading {
+    font-family: var(--font-gowun-dodum); /* 고운돋움 폰트 변수 사용 */
+    font-size: 3rem; /* 원하는 크기로 조절 */
+    font-weight: normal; /* 폰트 고유의 굵기 사용 (Gowun Dodum은 기본 400) */
+    color: var(--color-black);
+    letter-spacing: 1px; /* 글자 간격 조절 (선택 사항) */
 }
 
 /* 제목 배치 (왼쪽 정렬 한글, 오른쪽 정렬 영어) */
@@ -470,7 +483,7 @@ footer {
     text-align: center;
     font-size: 0.9rem;
     color: var(--color-medium-gray);
-    border-top: 1px solid var(--border-color); /* 수정: --border-border -> --border-color */
+    border-top: 1px solid var(--border-color);
     margin-top: auto;
 }
 
@@ -534,5 +547,10 @@ footer {
     /* 사이드바 모바일 너비 조정 */
     .sidebar {
         width: 80%; /* 모바일에서 사이드바 너비 */
+    }
+
+    /* 모바일에서 '안녕하세요' 폰트 크기 조정 */
+    .gowun-dodum-heading {
+        font-size: 2.2rem; /* 모바일에서 더 작게 */
     }
 }

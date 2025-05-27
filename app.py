@@ -40,8 +40,6 @@ projects_data = [
         "year": "2024"
     }
     # 여기에 더 많은 프로젝트를 추가할 수 있습니다.
-    # 복사해서 붙여넣고 id, title_ko, title_en, thumb_img, type, description, full_images, materials, year 등을 수정하세요.
-    # 만약 호버 시 이미지가 뜨게 하고 싶다면 'thumb_img'에 이미지 경로를 넣고 'type'을 'image'로 설정하세요.
 ]
 
 # --- Flask 라우팅 (URL 처리) ---
@@ -63,12 +61,9 @@ def project_detail(project_id):
         return render_template('project_detail.html', project=project)
     else:
         # 프로젝트를 찾지 못했을 경우 404 에러를 반환합니다.
-        # 이 경우 404.html 템플릿을 만들 수도 있습니다.
         return "<h1>404 Not Found</h1><p>죄송합니다. 요청하신 프로젝트를 찾을 수 없습니다.</p><p><a href='/'>메인 페이지로 돌아가기</a></p>", 404
 
 # --- 애플리케이션 실행 ---
 if __name__ == '__main__':
     # Flask 애플리케이션을 개발 모드로 실행합니다.
-    # debug=True는 코드 변경 시 자동으로 서버를 재시작하고, 자세한 에러 메시지를 보여줍니다.
     app.run(debug=True)
-    # 실제 웹 서버에 배포할 때는 debug=False로 설정하거나, Gunicorn 같은 WSGI 서버를 사용해야 합니다.
