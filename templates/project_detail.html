@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project.title_ko }} | 구현서 포트폴리오</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1><a href="/">Design PORTFOLIO</a></h1> {# 메인 페이지로 돌아가는 링크 #}
+            <p class="designer-name">그래픽 디자이너 구현서</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="project-detail-section">
+            <h2 class="project-detail-title">{{ project.title_ko }}</h2>
+            <p class="project-detail-subtitle">{{ project.title_en | safe }}</p>
+
+            <div class="project-meta">
+                <p><strong>재료:</strong> {{ project.materials }}</p>
+                <p><strong>연도:</strong> {{ project.year }}</p>
+            </div>
+
+            <div class="project-description">
+                <p>{{ project.description }}</p>
+            </div>
+
+            <div class="project-full-images">
+                {% for image_path in project.full_images %}
+                    {# 상세 페이지용 이미지들을 반복하여 표시합니다. #}
+                    <img src="{{ url_for('static', filename=image_path) }}" alt="{{ project.title_ko }} - 이미지 {{ loop.index }}">
+                {% endfor %}
+            </div>
+
+            <div class="back-link">
+                <a href="/">← 프로젝트 목록으로 돌아가기</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 HYUNSEO GU. All rights reserved.</p>
+    </footer>
+</body>
+</html>

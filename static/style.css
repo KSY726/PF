@@ -1,0 +1,301 @@
+/* 웹 폰트 정의 */
+:root {
+    --font-heading: 'Playfair Display', serif; /* 큰 제목, 로고용 */
+    --font-body: 'Noto Sans KR', sans-serif;   /* 본문용 */
+    --color-black: #000;
+    --color-white: #fff;
+    --color-light-gray: #f8f8f8;
+    --color-dark-gray: #333;
+    --color-medium-gray: #777;
+    --border-color: #eee;
+}
+
+/* 기본 설정 */
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-white); /* 흰색 배경 */
+    color: var(--color-dark-gray); /* 어두운 텍스트 */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--color-dark-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-black);
+}
+
+/* 헤더 */
+header {
+    background-color: var(--color-white);
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* 디자이너 이름이 아래에 붙도록 */
+}
+
+header h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: normal;
+    letter-spacing: 2px;
+    color: var(--color-black);
+}
+
+header h1 a { /* 헤더 로고 링크 스타일 */
+    color: var(--color-black);
+}
+
+header .designer-name {
+    font-size: 0.9rem;
+    color: var(--color-medium-gray);
+    margin: 0;
+}
+
+/* 섹션 공통 스타일 */
+section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-with-line {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-with-line:last-of-type {
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--color-black);
+    font-weight: 500;
+    margin: 0; /* 기본 마진 제거 */
+}
+
+/* 제목 배치 (왼쪽 정렬 한글, 오른쪽 정렬 영어) */
+.section-header-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* 영어 제목을 아래에 맞춤 */
+    margin-bottom: 3rem;
+}
+
+.section-title-en {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-medium-gray);
+}
+
+/* 프로젝트 목록 섹션 제목 (중앙 정렬) */
+.section-header-center {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header-center h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Intro Image 섹션 */
+#intro-image {
+    padding: 0;
+    text-align: center;
+    max-width: 100%;
+}
+
+#intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* About Me 섹션 */
+#about-me .about-content {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start; /* 상단 정렬 */
+}
+
+#about-me .about-text {
+    flex: 2; /* 텍스트가 더 많은 공간 차지 */
+}
+
+#about-me .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-dark-gray);
+    margin-bottom: 1rem;
+}
+
+#about-me .about-image {
+    flex: 1; /* 이미지가 1만큼 공간 차지 */
+    text-align: right; /* 이미지를 오른쪽에 붙이기 */
+}
+
+#about-me .about-image img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border-color); /* 테두리 추가 */
+}
+
+/* --- 프로젝트 갤러리 (호버 효과) --- */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.project-item {
+    text-align: center;
+    overflow: hidden; /* 이미지 확대 시 영역 밖으로 나가는 것 방지 */
+    position: relative; /* 내부 요소 absolute positioning 기준점 */
+    border: 1px solid var(--color-border); /* 기본 테두리 */
+    background-color: var(--color-white); /* 기본 흰색 배경 */
+    cursor: pointer;
+    transition: transform 0.3s ease; /* 확대 애니메이션 */
+    aspect-ratio: 4/3; /* 아이템의 가로세로 비율 고정 (예: 4:3) */
+}
+
+.project-item:hover {
+    transform: scale(1.05); /* 호버 시 약간 확대 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 호버 시 그림자 (선택 사항) */
+}
+
+.project-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* 평소에는 숨김 */
+    transition: opacity 0.3s ease; /* 이미지 fade-in 효과 */
+    z-index: 1; /* 텍스트보다 위에 표시 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-black); /* 이미지가 로드되기 전이나 투명할 때 배경색 */
+}
+
+.project-image-container img {
+    width: 100%; /* 컨테이너 너비에 꽉 채움 */
+    height: 100%; /* 컨테이너 높이에 꽉 채움 */
+    object-fit: cover; /* 이미지가 비율을 유지하며 컨테이너를 꽉 채우도록 */
+    display: block; /* 이미지 하단 여백 제거 */
+}
+
+.project-item:hover .project-image-container {
+    opacity: 1; /* 호버 시 이미지 보임 */
+}
+
+.project-text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* 텍스트가 여러 줄일 때 정렬 */
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* 이미지 위에 표시 */
+    color: var(--color-dark-gray);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box; /* padding이 width, height에 포함되도록 */
+    background-color: var(--color-white); /* 평소 흰색 배경 */
+    transition: opacity 0.3s ease; /* 배경색 변화 (선택 사항) */
+}
+
+.project-item:hover .project-text-overlay {
+    opacity: 0; /* 호버 시 텍스트 숨김 */
+}
+
+.project-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3; /* 다른 요소 위에 위치하여 클릭 가능하게 함 */
+}
+
+/* 'text-placeholder' 타입 프로젝트 아이템에 대한 특별 처리 */
+.project-item.text-placeholder .project-image-container {
+    display: none; /* 텍스트 플레이스홀더는 이미지 컨테이너를 아예 숨김 */
+}
+
+.project-item.text-placeholder .project-text-overlay {
+    opacity: 1; /* 텍스트 플레이스홀더는 항상 텍스트를 보임 */
+    background-color: var(--color-white); /* 항상 흰색 배경 */
+    /* 호버 시 텍스트 플레이스홀더의 오버레이는 그대로 유지 (opacity: 1) */
+}
+
+.project-item.text-placeholder:hover .project-text-overlay {
+    opacity: 1; /* 호버 시에도 텍스트가 그대로 보이게 */
+    /* 필요하다면 호버 시 배경색만 살짝 변경 가능 */
+    background-color: var(--color-light-gray);
+}
+
+
+/* --- 프로젝트 상세 페이지 스타일 (project_detail.html) --- */
+#project-detail-section {
+    padding-top: 2rem; /* 헤더와의 간격 조절 */
+    padding-bottom: 4rem;
+    text-align: center;
+}
+
+.project-detail-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-black);
+}
+
+.project-detail-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--color-medium-gray);
+    margin-top: 0;
+    margin-bottom: 3rem;
+}
+
+.project-meta {
+    font-size: 0.95rem;
+    color: var(--color-medium-gray);
+    margin-bottom: 2rem;
+}
+
+.project-meta p {
+    display: inline-block; /* 재료와 연도를 한 줄에 표시 */
+    margin: 0 1rem;
+}
+
+.project-description {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify

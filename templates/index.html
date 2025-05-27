@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구현서 | Design PORTFOLIO</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Design PORTFOLIO</h1>
+            <p class="designer-name">그래픽 디자이너 구현서</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro-image">
+            <img src="{{ url_for('static', filename='images/intro_grid.png') }}" alt="인트로 그리드 패턴 이미지">
+        </section>
+
+        <section id="about-me" class="section-with-line">
+            <div class="section-header-left">
+                <h2>안녕하세요, 구현서입니다.</h2>
+                <span class="section-title-en">ABOUT ME</span>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>저는 영상과 미디어, 그래픽 디자인에 흥미를 가지고 경성대학교 미디어콘텐츠학과에 입학하였습니다. 아직은 배우는 입장에서 다양한 시도를 해보고 있는 대학생입니다. 디자인, 사진, 기획 등 분야를 정하지 않고 이것저것 만들어보며 제가 진짜로 흥미를 느끼는 지점을 찾는 중입니다. 완벽한 결과보다는 "해보는 과정" 자체를 더 소중하게 여기며 작업합니다.</p>
+                    <p>이번 포트폴리오에서는 제가 참여한 다양한 프로젝트를 소개해드리며, 그 과정과 결과를 함께 공유하고자 합니다.</p>
+                </div>
+                <div class="about-image">
+                    <img src="{{ url_for('static', filename='images/about_me_photo.jpg') }}" alt="구현서 디자이너 사진">
+                </div>
+            </div>
+        </section>
+
+        <section id="project-list" class="section-with-line">
+            <div class="section-header-center">
+                <h2>프로젝트 목록</h2>
+                <span class="section-title-en">PROJECT</span>
+            </div>
+            <div class="project-gallery">
+                {% for project in projects %}
+                {# project.type이 'text'인 경우에만 'text-placeholder' 클래스를 추가합니다. #}
+                <div class="project-item {% if project.type == 'text' %}text-placeholder{% endif %}">
+                    <div class="project-image-container">
+                        {# thumb_img가 정의되어 있을 때만 이미지를 로드합니다. #}
+                        {% if project.thumb_img %}
+                        <img src="{{ url_for('static', filename=project.thumb_img) }}" alt="{{ project.title_ko }} Project Thumbnail">
+                        {% endif %}
+                    </div>
+                    <div class="project-text-overlay">
+                        {# safe 필터를 사용하여 HTML 태그 (예: <br>)가 있는 텍스트를 안전하게 출력합니다. #}
+                        <span class="project-text">{{ project.title_en | safe }}</span>
+                    </div>
+                    {# project_id를 사용하여 상세 페이지로 이동하는 링크를 전체 아이템에 적용합니다. #}
+                    <a href="{{ url_for('project_detail', project_id=project.id) }}" class="project-link"></a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        </main>
+
+    <footer>
+        <p>&copy; 2025 HYUNSEO GU. All rights reserved.</p>
+    </footer>
+</body>
+</html>
